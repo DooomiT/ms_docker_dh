@@ -1,0 +1,21 @@
+version: '3'
+services: 
+  golang-posts-service:
+    build: posts/.
+    ports:
+      - "8080:8080"
+    image: florianbufler/posts_service
+  golang-comments-service:
+    build: comments/.
+    ports:
+      - "8081:8081"
+    image: florianbufler/posts_service
+  golang-eventbus-service:
+    build: eventbus/.
+    ports:
+      - "8085:8085"
+    image: florianbufler/posts_service
+networks:
+  default:
+    external:
+      name: ms_dc
