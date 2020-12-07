@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\Program Files (x86)\kompose\kompose.exe convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: golang-eventbus-service
+  name: golang-eventbus-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: golang-eventbus-service
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\Program Files (x86)\kompose\kompose.exe convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/ms_dc: "true"
+        io.kompose.service: golang-eventbus-service
+    spec:
+      containers:
+      - image: florianbufler/posts_service
+        imagePullPolicy: ""
+        name: golang-eventbus-service
+        ports:
+        - containerPort: 8085
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

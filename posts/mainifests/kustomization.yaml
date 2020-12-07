@@ -1,8 +1,0 @@
-bases:
-#- build/openshift
-- deploy/k8s
-
-images:
-- name: flo101/posts-service
-  newName: quay.io/flo101/posts-service
-  newTag: main
